@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>I love Cars</title>
+    <script src="https://kit.fontawesome.com/e995974119.js" crossorigin="anonymous"></script>
+    <script src="./Home.js" defer></script>
+    <link rel="stylesheet" href="index.css" />
+    <script src="./Cars.jsx" defer></script>
+    <script src="./App.jsx" defer></script>
+    <script src="./App.css"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
+    <script type="text/javascript">
+      (function () {
+        emailjs.init("gCwI_XisOix3B45N1");
+      })();
+    </script>
+  </head>
+
+  <section id="navbar">
+    <section id="landing-page" onmousemove="moveBackground(event)">
+      <nav>
+        <figure>
+          <li class="nav__link" onclick="toggleModal()">
+          <img id="car-logo" src="./assets/Dark Blue Minimalist Car Rental Deals Instagram Post.png" alt="logo" />
+        </li>
+        </figure>
+      
+        <ul class="nav__link--list">
+          <li class="nav__link">
+            <a
+              href="./index.html"
+              class="nav__link--anchor link__hover-effect link__hover-effect--blue">
+            <button>Home</button>
+            </a>
+          </li>
+
+          <li class="nav__link">
+            <a
+              href="./findyourcat.html"
+              class="nav__link--anchor link__hover-effect link__hover-effect--blue">
+              <button>More Car Info</button>
+              </a>
+          </li>
+
+          <li class="nav__link" onclick="toggleModal()">
+            <a
+              href="#"
+              class="nav__link--anchor link__hover-effect link__hover-effect--blue">
+              <button>Contact</button>
+              </a>
+          </li>
+
+          <li class="nav__link click" onclick="toggleContrast()">
+            <a
+              href="#"
+              class="nav__link--anchor link__hover-effect link__hover-effect--black"
+              ><i class="fa-solid fa-circle-half-stroke"></i>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <h1>California's Best Cars for Sales!</h1>
+      <h2>Find your dream car!</h2>
+    </section>
+
+    <body>
+      <a href="#">
+        <button class="mail__btn click" onclick="toggleModal()">
+          <i class="fa-regular fa-envelope"></i>
+        </button>
+      </a>
+      <a href="Find your dream car" class="scroll">
+        <div class="scroll__icon click"></div>
+      </a>
+      <div class="modal">
+        <div class="modal__half modal__about">
+          <h3 class="modal__title modal__title--about">
+            Here's a bit about <b class="blue" onclick="toggleModal()"></b>
+          </h3>
+          <h4 class="modal__sub-title modal__sub-title--about">
+            California Car Finder
+          </h4>
+          <p class="modal__para">
+            We're Passionate about <span class="text-blue">Cars.</span>
+            <br />
+            We have a variety of different models available, ready to be test driven
+            <span class="text-blue">by their new owner.</span> Contact us
+            today and we can discuss further!
+            <br />
+            <span class="text-blue">We're here to help</span> you make the right
+            choice, so you can drive away in the car of your dreams!
+          </p>
+          <div class="car__Images--container">
+            <figure class="Car_Images">
+              <img
+                class="modal__car--img"
+                src="./assets/Grogu the cat.png"
+                alt="GC"
+              />
+              <span class="car__name">Maserati Car</span>
+            </figure>
+            
+            <figure class="Car_Images">
+              <img
+                class="modal__car--img"
+                src="./assets/Catakin Skywalker.jpg"
+                alt="JTC"
+              />
+              <span class="car__name">Cartakin AkCar</span>
+            </figure>
+
+            <figure class="Car_Images">
+              <img
+                class="modal__car--img"
+                src="./assets/Catlacious Crumb.png"
+                alt="CC"
+              />
+              <span class="car__name">CarLacious Car</span>
+            </figure>
+          </div>
+        </div>
+
+        <div class="modal__half modal__contact">
+          <i class="fas fa-times modal__exit click" onclick="toggleModal()"></i>
+          <h3 class="modal__title modal__title--contact">Let's have a chat!</h3>
+          <h3 class="modal__sub-title modal__sub-title--contact">
+            Call us Today!
+          </h3>
+          <form id="contact__form" onsubmit="contact(event)">
+            <div class="form__item">
+              <label class="form__item--label"> Name</label>
+              <input class="input" name="user_name" type="text" required />
+            </div>
+            <div class="form__item">
+              <label class="form__item--label">Phone</label>
+              <input class="input" name="user_phone" type="number" required />
+            </div>
+            <div class="form__item">
+              <label class="form__item--label">Email</label>
+              <input class="input" name="user_email" type="email" required />
+            </div>
+            <div class="form__item">
+              <label class="form__item--label">Message</label>
+              <textarea
+                class="input"
+                name="message"
+                type="text"
+                required
+              ></textarea>
+            </div>
+            <button id="contact__submit" class="form__submit">Submit</button>
+          </form>
+          <div class="modal__overlay modal__overlay--loading">
+            <i class="fas fa-spinner"></i>
+          </div>
+          <div class="modal__overlay modal__overlay--success">
+            Thanks for your message. We will be in touch soon!
+          </div>
+        </div>
+      </div>
+
+      <div class="car__search">
+        <a href="./index.html">
+          <button>← Back</button>
+        </a>
+        <select onchange="showCarImage(value)" name="car_selector" id="car_selector">
+        </select>
+        <div class="car__model--car">
+        <a id="wiki_link" target="_blank">
+        <a href="#wiki-link" class= "wiki_link" target="_blank"></a>
+        </a>
+        <div id="car_json"></div>
+        </div>
+        <div class="model__image--car">
+        <img id="model_image">
+        </div>
+      </div>
+    <script src="./pages/Home.jsx"></script>
+    <script src="./pages/Cars.jsx"></script>
+    <script src="./modal.js"></script>
+  </body>
+    
+    <footer>
+      <div class="footer__container">
+        <div class="row footer__row">
+          <a
+          href="#" onclick="toggleModal()" class=""
+          class="footer__list--link1 link__hover-effect link__hover-effect-white"
+        >
+          Contact Us
+        </a>
+        <a
+          href="./findyourcar.html" class="button-class"
+          class="footer__class--link2 link__hover-effect link__hover-effect-white"
+        >More Car Info
+      </a>
+      <div class="footer__copyright">Copyright © 2024 Nalini Krishan</div>
+    </div>
+  </div>
+    </footer>
+    </section>
+</html>
+
+
+
